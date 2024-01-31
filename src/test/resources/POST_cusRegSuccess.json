@@ -1,0 +1,19 @@
+{
+  "request":
+    {
+      "mobileNo": "",
+      "email": "",
+      "platform": "android",
+      "deviceId": "",
+      "preferredLanguage": "en",
+      "nic": "200057200430",
+      "firstName": "Oshidhie",
+      "lastName": "Peiris",
+      "referrerId": 0,
+      "latitude": "12",
+      "longitude": "15",
+      "username": "Oshidhie",
+      "password": "Osh!12345678",
+      "nationality": "LKA"
+    }
+}
