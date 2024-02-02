@@ -1,5 +1,6 @@
-package endpoints;
+package endpoints.classes;
 
+import endpoints.DatabaseConnector;
 import org.json.simple.JSONObject;
 import utils.utility;
 
@@ -9,7 +10,7 @@ public class SuccessReg {
         DatabaseConnector databaseConnector = new DatabaseConnector();
         databaseConnector.fetchDataFromDatabase();
 
-        String jsonFilePath = "src/test/resources/POST_cusRegSuccess.json";
+        String jsonFilePath = "src/test/resources/SuccessJson/POST_cusRegSuccess.json";
 
         String email = databaseConnector.getEmail();
         String mobileNo = databaseConnector.getMobileNo();

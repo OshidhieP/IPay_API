@@ -38,7 +38,7 @@ public class ResponseAssert extends AbstractAssert<ResponseAssert, Response> {
                 .isEqualTo(value);
         return this;
     }
-    public ResponseAssert hasKey(String key, String bearer) {
+    public ResponseAssert hasKey(String key) {
         softAssertions.assertThat(actual.getBody().jsonPath().getString(key))
                 .isNotNull();
         return this;

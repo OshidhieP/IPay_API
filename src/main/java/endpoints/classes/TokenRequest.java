@@ -61,7 +61,7 @@
 //    }
 //}
 
-package api;
+package endpoints.classes;
 
 import endpoints.Routes;
 
