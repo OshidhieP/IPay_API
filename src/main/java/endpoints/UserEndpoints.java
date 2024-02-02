@@ -1,5 +1,7 @@
 package endpoints;
 
+import endpoints.classes.JsonFileHandler;
+import endpoints.classes.RandomMobileNumberGenerator;
 import endpoints.classes.SuccessReg;
 import endpoints.classes.VerifyOTP;
 import io.restassured.RestAssured;
@@ -13,12 +15,17 @@ public class UserEndpoints {
 
     public static Response createNewUser(String accessToken) {
 
-        File payload = new File("src/test/resources/SuccessJson/POST_cusRegistration.json");
+        File payloadFile = new File("src/test/resources/SuccessJson/POST_cusRegistration.json");
+
+        JSONObject jsonPayload = JsonFileHandler.readJsonFromFile(payloadFile);
+
+        String randomMobileNumber = RandomMobileNumberGenerator.generateRandomMobileNumber();
+        jsonPayload.put("mobileNo", randomMobileNumber);
 
         return RestAssured.given()
                 .contentType(ContentType.JSON)
                 .accept(ContentType.JSON)
-                .body(payload)
+                .body(jsonPayload.toJSONString())
                 .header("Authorization", "Bearer " + accessToken)
                 .when()
                 .post(Routes.post_CusRegistrationInit_url);
