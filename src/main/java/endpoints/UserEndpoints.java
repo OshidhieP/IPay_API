@@ -57,9 +57,10 @@ public class UserEndpoints {
                 .post(Routes.post_regComplete_url);
     }
 
+    //Invalid
     public static Response emptyEmailInit(String accessToken) {
 
-        File payload = new File("src/test/resources/POST_emptyEmailInit.json");
+        File payload = new File("src/test/resources/InvalidJson/POST_emptyEmailInit.json");
 
         return RestAssured.given()
                 .contentType(ContentType.JSON)
@@ -69,4 +70,19 @@ public class UserEndpoints {
                 .when()
                 .post(Routes.post_CusRegistrationInit_url);
     }
+
+    public static Response invalidMobileNoInit(String accessToken) {
+
+        File payload = new File("src/test/resources/InvalidJson/POST_emptyEmailInit.json");
+
+        return RestAssured.given()
+                .contentType(ContentType.JSON)
+                .accept(ContentType.JSON)
+                .body(payload)
+                .header("Authorization", "Bearer " + accessToken)
+                .when()
+                .post(Routes.post_CusRegistrationInit_url);
+    }
+
+
 }

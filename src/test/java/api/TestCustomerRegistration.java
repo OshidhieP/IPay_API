@@ -32,19 +32,17 @@ public class TestCustomerRegistration {
     }
 
     @Test(priority = 2)
-        public void testCreateUserInvalid() {
-            try {
-                String accessToken = TokenRequest.requestToken();
+        public void testCreateUserInvalid() throws IOException {
 
-                Response invalidEmail = UserEndpoints.emptyEmailInit(accessToken);
-                ResponseAssert.assertThat(invalidEmail)
-                        .statusCodeIs(500)
-                        .hasKey("responseObject.errorMessage")
-                        .hasErrorMessage("Input validation failed [Invalid email address]");
+            String accessToken = TokenRequest.requestToken();
 
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            Response invalidEmail = UserEndpoints.emptyEmailInit(accessToken);
+            ResponseAssert.assertThat(invalidEmail)
+                    .statusCodeIs(200)
+                    .hasKey("responseObject.errorMessage")
+                    .hasErrorMessage("Input validation failed [Invalid email address]")
+                    .assertAll();
     }
 
 }
+
